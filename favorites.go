@@ -27,7 +27,7 @@ func newFavoritesUI(files *files, favorites []string) (ui *favoritesUI) {
 	for i, p := range favorites {
 		values[i] = &duit.ListValue{
 			Selected: i == 0,
-			Text:     path.Base(p),
+			Text:     filepath.Base(p),
 			Value:    p,
 		}
 	}
@@ -62,7 +62,7 @@ func newFavoritesUI(files *files, favorites []string) (ui *favoritesUI) {
 			}
 			if lv == nil {
 				lv = &duit.ListValue{
-					Text:     path.Base(files.pathLabel.Text),
+					Text:     filepath.Base(files.pathLabel.Text),
 					Value:    files.pathLabel.Text,
 					Selected: true,
 				}

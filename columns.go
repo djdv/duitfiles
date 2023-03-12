@@ -1,6 +1,7 @@
 package duitfiles
 
 import (
+	"os"
 	"strings"
 
 	"github.com/ktye/duit"
@@ -32,7 +33,8 @@ func (ui *columnsUI) selectName(col int, name string) {
 		ui.files.favUI.toggle.Text = "-"
 	}
 	dui.MarkLayout(ui.files.favUI.toggle)
-	if !strings.HasSuffix(path, "/") || name == "" {
+	const pathDelimiter = string(os.PathSeparator)
+	if !strings.HasSuffix(path, pathDelimiter) || name == "" {
 		// not a dir, nothing to do for file selection, or no new column to show
 		return
 	}

@@ -60,7 +60,8 @@ func (f *files) listDir(path string) []string {
 	for i, fi := range l {
 		names[i] = fi.Name()
 		if fi.IsDir() {
-			names[i] += "/"
+			const pathDelimiter = string(os.PathSeparator)
+			names[i] += pathDelimiter
 		}
 	}
 	return names

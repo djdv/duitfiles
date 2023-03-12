@@ -1,6 +1,7 @@
 package duitfiles
 
 import (
+	"os"
 	"strings"
 
 	"github.com/ktye/duit"
@@ -68,7 +69,9 @@ func newColumnUI(files *files, colIndex int, name string, names []string) (ui *c
 				}
 				index := sel[0]
 				elem := ui.list.Values[index].Value.(string)
-				if strings.HasSuffix(elem, "/") {
+
+				const pathDelimiter = string(os.PathSeparator)
+				if strings.HasSuffix(elem, pathDelimiter) {
 					e.Consumed = true
 					colsUI.selectName(colIndex, elem)
 					colNames := colsUI.Kids[colIndex+1].UI.(*columnUI).names
