@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 
 	"github.com/ktye/duit"
@@ -129,21 +130,22 @@ func (ui *favoritesUI) findFavorite(path string) *duit.ListValue {
 }
 
 func favoritesPath() string {
-	r := duit.AppDataDir("duitfiles") + "/favorites"
+	r := filepath.Join(duit.AppDataDir("duitfiles"), "favorites")
 	return r
 }
 
 func loadFavorites() ([]string, error) {
 	l := []string{}
-	home := os.Getenv("HOME")
-	if home == "" {
-		home = os.Getenv("home")
+	home, err := os.UserHomeDir()
+	if err != nil {
+		return nil, err
 	}
+	const pathDelimiter = string(os.PathSeparator)
 	if home != "" {
-		home += "/"
+		home += pathDelimiter
 		l = append(l, home)
 	}
-	l = append(l, "/")
+	l = append(l, pathDelimiter)
 
 	f, err := os.Open(favoritesPath())
 	if os.IsNotExist(err) {
