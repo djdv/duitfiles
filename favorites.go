@@ -179,6 +179,9 @@ func saveFavorites(l []string) (err error) {
 			f.Close()
 		}
 	}()
+	if len(l) == 0 {
+		return f.Truncate(0)
+	}
 	_, err = fmt.Fprintln(f, strings.Join(l, "\n"))
 	if err != nil {
 		log.Printf("writing favorites: %s\n", err)
