@@ -3,7 +3,7 @@ package duitfiles
 import (
 	"strings"
 
-	"github.com/mjl-/duit"
+	"github.com/ktye/duit"
 )
 
 type columnsUI struct {

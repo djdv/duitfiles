@@ -3,8 +3,8 @@ package duitfiles
 import (
 	"strings"
 
-	"9fans.net/go/draw"
-	"github.com/mjl-/duit"
+	"github.com/ktye/duit"
+	draw "github.com/ktye/duitdraw"
 )
 
 type columnUI struct {

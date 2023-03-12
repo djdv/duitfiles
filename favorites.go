@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/mjl-/duit"
+	"github.com/ktye/duit"
 )
 
 type favoritesUI struct {
@@ -164,7 +164,7 @@ func loadFavorites() ([]string, error) {
 
 func saveFavorites(l []string) (err error) {
 	favPath := favoritesPath()
-	os.MkdirAll(path.Dir(favPath), 0777)
+	os.MkdirAll(path.Dir(favPath), 0o777)
 	f, err := os.Create(favPath)
 	if err != nil {
 		return err

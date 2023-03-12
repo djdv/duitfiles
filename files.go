@@ -9,8 +9,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"9fans.net/go/draw"
-	"github.com/mjl-/duit"
+	"github.com/ktye/duit"
+	draw "github.com/ktye/duitdraw"
 )
 
 // Favorites on the left, fixed size. Remainder on the right contains one or more listboxes.
