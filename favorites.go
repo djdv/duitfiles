@@ -155,6 +155,9 @@ func loadFavorites() ([]string, error) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		name := scanner.Text()
+		if name == "" {
+			continue
+		}
 		l = append(l, name)
 	}
 	err = scanner.Err()
